@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "concurrently": "^4.1.2",
+    "materialize-css": "^1.0.0",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
     "react-router-dom": "^5.1.1",
