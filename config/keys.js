@@ -1,5 +1,7 @@
 if (process.env.NODE_ENV === 'PRODUCTION') {
   module.exports = require('./prod');
 } else {
-  module.exports = require('./dev');
+  //FIXME:
+  //module.exports = require('./dev');
+  module.exports = require('./prod');
 }
