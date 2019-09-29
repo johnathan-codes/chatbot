@@ -1,0 +1,23 @@
+{
+  "name": "chatbot",
+  "version": "1.0.0",
+  "description": "Chatbot",
+  "main": "server.js",
+  "scripts": {
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OneManDevz/chatbot.git"
+  },
+  "author": "OneManDevz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OneManDevz/chatbot/issues"
+  },
+  "homepage": "https://github.com/OneManDevz/chatbot#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^1.19.2"
+  }
+}
