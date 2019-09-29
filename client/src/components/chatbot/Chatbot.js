@@ -3,9 +3,12 @@ import axios from 'axios/index';
 import Message from './Message';
 import _ from 'lodash';
 class Chatbot extends Component {
+  messagesEnd;
+
   constructor(props) {
     super(props);
 
+    this.onPressHandle = this.onPressHandle.bind(this);
     this.state = {
       messages: [],
       currentInput: ''
@@ -16,9 +19,13 @@ class Chatbot extends Component {
     this.dialogflow_event_query('Ahoj');
   }
 
+  componentDidUpdate() {
+    this.messagesEnd.scrollIntoView({ behavior: 'smooth' });
+  }
+
   async dialogflow_text_query(text) {
     let says = {
-      speaks: 'me',
+      speaks: 'ja',
       msg: {
         text: {
           text: text
@@ -65,6 +72,13 @@ class Chatbot extends Component {
     }
   }
 
+  onPressHandle(e) {
+    if (e.key === 'Enter') {
+      this.dialogflow_text_query(e.target.value);
+      e.target.value = '';
+    }
+  }
+
   render() {
     return (
       <div style={{ height: 400, width: 400, float: 'right' }}>
@@ -74,7 +88,13 @@ class Chatbot extends Component {
         >
           <h2>Chatbot tu</h2>
           {this.renderMessages(this.state.messages)}
-          <input type="text"></input>
+          <div
+            style={{ float: 'left', clear: 'both' }}
+            ref={element => {
+              this.messagesEnd = element;
+            }}
+          ></div>
+          <input type="text" onKeyPress={this.onPressHandle}></input>
         </div>
       </div>
     );
