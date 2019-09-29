@@ -8,7 +8,6 @@ import Chatbot from './chatbot/Chatbot';
 const App = () => {
   return (
     <div>
-      Hello world!
       <BrowserRouter>
         <div>
           <Header />

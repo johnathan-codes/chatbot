@@ -4,7 +4,7 @@ const Landing = () => {
   let company = 'Millennium';
   return (
     <div style={{ textAlign: 'center' }}>
-      <h1>Chatbot for {company}</h1>
+      <h1>Chatbot pre {company}</h1>
     </div>
   );
 };
