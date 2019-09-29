@@ -2,8 +2,14 @@ import React, { Component } from 'react';
 import axios from 'axios/index';
 import Message from './Message';
 import _ from 'lodash';
+import Cookies from 'universal-cookie';
+import { v4 as uuid } from 'uuid';
+
+const cookies = new Cookies();
+
 class Chatbot extends Component {
   messagesEnd;
+  textInput;
 
   constructor(props) {
     super(props);
@@ -13,6 +19,11 @@ class Chatbot extends Component {
       messages: [],
       currentInput: ''
     };
+
+    if (cookies.get('userID') === undefined) {
+      cookies.set('userID', uuid(), { path: '/' });
+    }
+    console.log(cookies.get('userID'));
   }
 
   componentDidMount() {
@@ -21,6 +32,7 @@ class Chatbot extends Component {
 
   componentDidUpdate() {
     this.messagesEnd.scrollIntoView({ behavior: 'smooth' });
+    this.textInput.focus();
   }
 
   async dialogflow_text_query(text) {
@@ -94,7 +106,13 @@ class Chatbot extends Component {
               this.messagesEnd = element;
             }}
           ></div>
-          <input type="text" onKeyPress={this.onPressHandle}></input>
+          <input
+            type="text"
+            onKeyPress={this.onPressHandle}
+            ref={input => {
+              this.textInput = input;
+            }}
+          ></input>
         </div>
       </div>
     );
