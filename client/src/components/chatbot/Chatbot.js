@@ -27,7 +27,7 @@ class Chatbot extends Component {
   }
 
   componentDidMount() {
-    this.dialogflow_event_query('Ahoj');
+    this.dialogflow_event_query('Welcome');
   }
 
   componentDidUpdate() {
