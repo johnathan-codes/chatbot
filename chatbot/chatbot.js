@@ -3,17 +3,17 @@ const dialogFlow = require('dialogFlow');
 const config = require('../config/keys');
 const structjson = require('./structjson');
 
-const projectID = config.googleProjectID;
+const projectID = config.GOOGLE_PROJECT_ID;
 const credentials = {
-  client_email: config.googleClientEmail,
-  private_key: config.googlePrivateKey
+  client_email: config.GOOGLE_CLIENT_EMAIL,
+  private_key: config.GOOGLE_PRIVATE_KEY
 };
 
 const sessionClient = new dialogFlow.SessionsClient({ projectID, credentials });
 
 const sessionPath = sessionClient.sessionPath(
   projectID,
-  config.dialogFlowSessionID
+  config.DIALOGFLOW_SESSION_LANGUAGE_CODE
 );
 module.exports = {
   textQuery: async function(text, params = {}) {
@@ -23,7 +23,7 @@ module.exports = {
       queryInput: {
         text: {
           text: text,
-          languageCode: config.dialogFlowSessionLanguageCode
+          languageCode: config.DIALOGFLOW_SESSION_ID
         }
       },
       queryParams: {
