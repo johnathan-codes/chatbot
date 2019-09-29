@@ -4,6 +4,7 @@
   "description": "Chatbot",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "server": "nodemon server.js"
   },
   "repository": {
@@ -17,7 +18,9 @@
   },
   "homepage": "https://github.com/OneManDevz/chatbot#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
     "nodemon": "^1.19.2"
   }
 }
