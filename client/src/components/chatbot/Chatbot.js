@@ -45,7 +45,10 @@ class Chatbot extends Component {
       }
     };
     this.setState({ messages: [...this.state.messages, says] }); //push new msg into the array
-    const res = await axios.post('/api/dialogflow_text_query', { text });
+    const res = await axios.post('/api/dialogflow_text_query', {
+      text,
+      userID: cookies.get('userID')
+    });
     if (res.data.fulfillmentMessages) {
       for (let msg of res.data.fulfillmentMessages) {
         says = {
@@ -58,7 +61,10 @@ class Chatbot extends Component {
   }
 
   async dialogflow_event_query(event) {
-    const res = await axios.post('/api/dialogflow_event_query', { event });
+    const res = await axios.post('/api/dialogflow_event_query', {
+      event,
+      userID: cookies.get('userID')
+    });
     if (res.data.fulfillmentMessages) {
       for (let msg of res.data.fulfillmentMessages) {
         let says = {
