@@ -1,5 +1,5 @@
 'use strict';
-const dialogFlow = require('dialogFlow');
+const dialogflow = require('dialogflow');
 const config = require('../config/keys');
 const structjson = require('./structjson');
 
@@ -9,7 +9,7 @@ const credentials = {
   private_key: config.GOOGLE_PRIVATE_KEY
 };
 
-const sessionClient = new dialogFlow.SessionsClient({ projectID, credentials });
+const sessionClient = new dialogflow.SessionsClient({ projectID, credentials });
 
 const sessionPath = sessionClient.sessionPath(
   projectID,
@@ -23,7 +23,7 @@ module.exports = {
       queryInput: {
         text: {
           text: text,
-          languageCode: config.DIALOGFLOW_SESSION_ID
+          languageCode: config.DIALOGFLOW_SESSION_LANGUAGE_CODE
         }
       },
       queryParams: {
@@ -45,7 +45,7 @@ module.exports = {
         event: {
           name: event,
           parameters: structjson.jsonToStructProto(params),
-          languageCode: config.dialogFlowSessionLanguageCode
+          languageCode: config.DIALOGFLOW_SESSION_LANGUAGE_CODE
         }
       }
     };
