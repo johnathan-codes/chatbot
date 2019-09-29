@@ -46,25 +46,27 @@ class Chatbot extends Component {
     };
     this.setState({ messages: [...this.state.messages, says] }); //push new msg into the array
     const res = await axios.post('/api/dialogflow_text_query', { text });
-
-    for (let msg of res.data.fulfillmentMessages) {
-      says = {
-        speaks: 'bot',
-        msg: msg
-      };
-      this.setState({ messages: [...this.state.messages, says] });
+    if (res.data.fulfillmentMessages) {
+      for (let msg of res.data.fulfillmentMessages) {
+        says = {
+          speaks: 'bot',
+          msg: msg
+        };
+        this.setState({ messages: [...this.state.messages, says] });
+      }
     }
   }
 
   async dialogflow_event_query(event) {
     const res = await axios.post('/api/dialogflow_event_query', { event });
-
-    for (let msg of res.data.fulfillmentMessages) {
-      let says = {
-        speaks: 'bot',
-        msg: msg
-      };
-      this.setState({ messages: [...this.state.messages, says] });
+    if (res.data.fulfillmentMessages) {
+      for (let msg of res.data.fulfillmentMessages) {
+        let says = {
+          speaks: 'bot',
+          msg: msg
+        };
+        this.setState({ messages: [...this.state.messages, says] });
+      }
     }
   }
 
@@ -86,8 +88,10 @@ class Chatbot extends Component {
 
   onPressHandle(e) {
     if (e.key === 'Enter') {
-      this.dialogflow_text_query(e.target.value);
-      e.target.value = '';
+      if (e.target.value) {
+        this.dialogflow_text_query(e.target.value);
+        e.target.value = '';
+      }
     }
   }
 
