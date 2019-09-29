@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/OneManDevz/chatbot#readme",
   "dependencies": {
+    "@google-cloud/storage": "^3.3.0",
     "body-parser": "^1.19.0",
     "dialogflow": "^0.12.0",
+    "dotenv": "^8.1.0",
     "express": "^4.17.1"
   },
   "devDependencies": {
