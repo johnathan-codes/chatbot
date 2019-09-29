@@ -12,6 +12,10 @@ class Chatbot extends Component {
     };
   }
 
+  componentDidMount() {
+    this.dialogflow_event_query('Ahoj');
+  }
+
   async dialogflow_text_query(text) {
     let says = {
       speaks: 'me',
@@ -34,7 +38,7 @@ class Chatbot extends Component {
   }
 
   async dialogflow_event_query(event) {
-    const res = await axios.post('/api/dialogflow_text_query', { event });
+    const res = await axios.post('/api/dialogflow_event_query', { event });
 
     for (let msg of res.data.fulfillmentMessages) {
       let says = {
