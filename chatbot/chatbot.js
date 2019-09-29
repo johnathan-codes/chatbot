@@ -1,7 +1,7 @@
 'use strict';
 const dialogFlow = require('dialogFlow');
 const config = require('../config/keys');
-
+const structjson = require('./structjson');
 const sessionClient = new dialogFlow.SessionsClient();
 
 const sessionPath = sessionClient.sessionPath(
@@ -9,7 +9,7 @@ const sessionPath = sessionClient.sessionPath(
   config.dialogFlowSessionID
 );
 module.exports = {
-  textQuery: async function(text, parameters = {}) {
+  textQuery: async function(text, params = {}) {
     let self = module.exports;
     const request = {
       session: sessionPath,
@@ -21,7 +21,24 @@ module.exports = {
       },
       queryParams: {
         payload: {
-          data: parameters
+          data: params
+        }
+      }
+    };
+
+    let responses = await sessionClient.detectIntent(request);
+    responses = await self.handleAction(responses);
+    return responses;
+  },
+  eventQuery: async function(event, params = {}) {
+    let self = module.exports;
+    const request = {
+      session: sessionPath,
+      queryInput: {
+        event: {
+          name: event,
+          parameters: structjson.jsonToStructProto(params),
+          languageCode: config.dialogFlowSessionLanguageCode
         }
       }
     };
