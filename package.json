@@ -4,6 +4,7 @@
   "description": "Chatbot",
   "main": "server.js",
   "scripts": {
+    "client-install": "cd client && npm install",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
@@ -15,21 +16,19 @@
     "url": "git+https://github.com/OneManDevz/chatbot.git"
   },
   "author": "OneManDevz",
+  "keywords": [],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/OneManDevz/chatbot/issues"
-  },
-  "homepage": "https://github.com/OneManDevz/chatbot#readme",
   "dependencies": {
-    "@google-cloud/storage": "^3.3.0",
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.18.3",
+    "concurrently": "^3.6.0",
+    "config": "^3.2.0",
+    "cors": "^2.8.4",
     "dialogflow": "^0.12.0",
-    "dotenv": "^8.1.0",
-    "express": "^4.17.1",
-    "mongoose": "^5.7.1"
+    "express": "^4.16.3",
+    "mongoose": "^5.2.1"
   },
   "devDependencies": {
-    "concurrently": "^4.1.2",
-    "nodemon": "^1.19.2"
+    "nodemon": "^1.17.5",
+    "prettier": "^1.18.2"
   }
 }
