@@ -79,13 +79,7 @@ class Chatbot extends Component {
   renderMessages(messages) {
     if (!_.isNil(messages) && _.size(messages)) {
       return messages.map((message, i) => {
-        return (
-          <Message
-            key={i}
-            speaks={message.speaks}
-            text={message.msg.text.text}
-          />
-        );
+        return <Message key={i} speaks={message.speaks} text={message.msg.text.text} />;
       });
     } else {
       return null;
@@ -103,12 +97,9 @@ class Chatbot extends Component {
 
   render() {
     return (
-      <div style={{ height: 400, width: 400, float: 'right' }}>
-        <div
-          id="chatbot"
-          style={{ height: '100%', width: '100%', overflow: 'auto' }}
-        >
-          <h2>Chatbot tu</h2>
+      <div style={{ height: 500, width: 400, float: 'right' }}>
+        <div id='chatbot' style={{ height: '100%', width: '100%', overflow: 'auto' }}>
+          <h2 style={{ textAlign: 'center' }}>Chatbot</h2>
           {this.renderMessages(this.state.messages)}
           <div
             style={{ float: 'left', clear: 'both' }}
@@ -117,7 +108,7 @@ class Chatbot extends Component {
             }}
           ></div>
           <input
-            type="text"
+            type='text'
             onKeyPress={this.onPressHandle}
             ref={input => {
               this.textInput = input;
