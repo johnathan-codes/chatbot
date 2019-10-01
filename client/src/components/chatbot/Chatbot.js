@@ -4,8 +4,9 @@ import Message from './Message';
 import _ from 'lodash';
 import Cookies from 'universal-cookie';
 import { v4 as uuid } from 'uuid';
-//import MyCard from './Card';
-import MyCard from './MatCard';
+
+import MyCard from './Card';
+//import MyCard from './MatCard';
 
 const cookies = new Cookies();
 
@@ -142,10 +143,11 @@ class Chatbot extends Component {
     return (
       <div
         style={{
-          height: '85%',
-          width: '66.5%',
+          height: '65%',
+          width: '45%',
           position: 'absolute',
           bottom: 10,
+          left: 750,
           border: '1px solid red'
         }}
       >
