@@ -4,7 +4,8 @@ import Message from './Message';
 import _ from 'lodash';
 import Cookies from 'universal-cookie';
 import { v4 as uuid } from 'uuid';
-import Card from './Card';
+//import MyCard from './Card';
+import MyCard from './MatCard';
 
 const cookies = new Cookies();
 
@@ -80,14 +81,12 @@ class Chatbot extends Component {
 
   renderCards(cards) {
     console.log(cards);
-    return cards.map((card, i) => <Card key={i} payload={card.structValue} />);
+    return cards.map((card, i) => <MyCard key={i} payload={card.structValue} />);
   }
 
   renderOneMessage(message, i) {
     if (message.msg && message.msg.text && message.msg.text.text) {
-      return (
-        <Message key={i} speaks={message.speaks} text={message.msg.text.text} />
-      );
+      return <Message key={i} speaks={message.speaks} text={message.msg.text.text} />;
     } else if (
       message.msg &&
       //message.msg.payload &&
@@ -96,13 +95,10 @@ class Chatbot extends Component {
     ) {
       return (
         <div key={i}>
-          <div className="card-panel grey lighten-5 z-depth-1">
+          <div className='card-panel grey lighten-5 z-depth-1'>
             <div style={{ overflow: 'hidden' }}>
-              <div className="col s2">
-                <a
-                  className="btn-floating btn-large waves-effect waves-light red"
-                  href="#!"
-                >
+              <div className='col s2'>
+                <a className='btn-floating btn-large waves-effect waves-light red' href='#!'>
                   {message.speaks}
                 </a>
               </div>
@@ -110,14 +106,10 @@ class Chatbot extends Component {
                 <div
                   style={{
                     height: 300,
-                    width:
-                      message.msg.payload.fields.cards.listValue.values.length *
-                      340
+                    width: message.msg.payload.fields.cards.listValue.values.length * 340
                   }}
                 >
-                  {this.renderCards(
-                    message.msg.payload.fields.cards.listValue.values
-                  )}
+                  {this.renderCards(message.msg.payload.fields.cards.listValue.values)}
                 </div>
               </div>
             </div>
@@ -157,10 +149,7 @@ class Chatbot extends Component {
           border: '1px solid red'
         }}
       >
-        <div
-          id="chatbot"
-          style={{ height: '100%', width: '100%', overflow: 'auto' }}
-        >
+        <div id='chatbot' style={{ height: '100%', width: '100%', overflow: 'auto' }}>
           {this.renderMessages(this.state.messages)}
           <div
             style={{ float: 'left', clear: 'both' }}
@@ -169,7 +158,7 @@ class Chatbot extends Component {
             }}
           ></div>
           <input
-            type="text"
+            type='text'
             onKeyPress={this.onPressHandle}
             ref={input => {
               this.textInput = input;

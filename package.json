@@ -19,6 +19,7 @@
   "keywords": [],
   "license": "MIT",
   "dependencies": {
+    "@material-ui/core": "^4.4.3",
     "body-parser": "^1.18.3",
     "concurrently": "^3.6.0",
     "config": "^3.2.0",
