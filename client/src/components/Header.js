@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = () => (
-  <nav className='nav-wrapper'>
-    <Link to={'/'} className='brand-logo'>
-      <img src='img/company-logo.png' alt='Millennium' />
+  <nav className="nav-wrapper">
+    <Link to={'/'} className="brand-logo">
+      <img src="img/company-logo.png" alt="Millennium" />
     </Link>
+    <h2 style={{ textAlign: 'center' }}>Chatbot</h2>
   </nav>
 );
 

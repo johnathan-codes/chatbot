@@ -6,9 +6,12 @@ const Message = props => (
       <div className="row valign-wrapper">
         {props.speaks === 'bot' && (
           <div className="col s2">
-            <button className="btn-floating btn-large waves-effect waves-light red">
+            <a
+              className="btn-floating btn-large waves-effect waves-light red"
+              href="#!"
+            >
               {props.speaks}
-            </button>
+            </a>
           </div>
         )}
         <div className="col s10">
@@ -16,9 +19,12 @@ const Message = props => (
         </div>
         {props.speaks === 'ja' && (
           <div className="col s2">
-            <button className="btn-floating btn-large waves-effect waves-light red">
+            <a
+              className="btn-floating btn-large waves-effect waves-light red"
+              href="#!"
+            >
               {props.speaks}
-            </button>
+            </a>
           </div>
         )}
       </div>
