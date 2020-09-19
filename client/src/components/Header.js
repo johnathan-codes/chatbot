@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = () => (
-  <nav className='nav-wrapper'>
+  <nav className='nav-wrapper red darken-5'>
     <Link to={'/'} className='brand-logo'>
       <img src='img/company-logo.png' alt='Millennium' />
     </Link>
