@@ -24,9 +24,9 @@
     "concurrently": "^5.3.0",
     "config": "^3.3.1",
     "cors": "^2.8.5",
-    "dialogflow": "^1.2.0",
+    "dialogflow": "^4.0.3",
     "express": "^4.17.1",
-    "mongoose": "^5.10.6"
+    "mongoose": "^5.12.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.4",
